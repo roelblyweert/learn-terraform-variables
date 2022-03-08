@@ -1,3 +1,13 @@
+terraform {
+  cloud {
+    organization = "davinsilabs"
+
+    workspaces {
+      name = "learn-terraform-variables"
+    }
+  }
+}
+
 data "aws_availability_zones" "available" {
   state = "available"
 }
