@@ -67,7 +67,7 @@ module "elb_http" {
 
   internal = false
 
-  security_groups = [module.lb_security_group.this_security_group_id]
+  security_groups = [module.lb_security_group.security_group_id]
   subnets         = module.vpc.public_subnets
 
   number_of_instances = length(module.ec2_instances.instance_ids)
@@ -100,7 +100,7 @@ module "ec2_instances" {
   instance_count     = 2
   instance_type      = "t2.micro"
   subnet_ids         = module.vpc.private_subnets[*]
-  security_group_ids = [module.app_security_group.this_security_group_id]
+  security_group_ids = [module.app_security_group.security_group_id]
 
   tags = {
     project     = "project-alpha",
